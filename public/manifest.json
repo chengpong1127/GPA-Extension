@@ -1,8 +1,22 @@
 {
-    "name": "GPA Extension",
-    "version": "0.0.1",
-    "manifest_version": 3,
-    "action": {
-      "default_popup": "index.html"
+  "name": "GPA Extension",
+  "version": "0.0.1",
+  "manifest_version": 3,
+  "action": {
+    "default_popup": "index.html"
+  },
+  "content_scripts": [
+    {
+      "js": ["assets/content.js"],
+      "matches": [
+        "https://querycourse.ntust.edu.tw/querycourse/*"
+      ]
     }
-  }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["assets/*"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
