@@ -2,25 +2,30 @@ import { createRoot } from 'react-dom/client';
 import GPAHeader from "../components/GPAHeader";
 import GPAContent from "../components/GPAContent";
 
+// Utility function to create and render the React node
 async function getNewElement(reactNode) {
   const newElement = document.createElement('div');
-  createRoot(newElement).render(reactNode);
+  const root = createRoot(newElement);
+  root.render(reactNode);
 
-  return new Promise((resolve) => {
+  // Wait until the element is rendered
+  await new Promise(resolve => {
     const observer = new MutationObserver(() => {
       const element = newElement.firstElementChild;
       if (element) {
         observer.disconnect();
-        resolve(element);
+        resolve();
       }
     });
 
     observer.observe(newElement, { childList: true, subtree: true });
   });
+
+  return newElement.firstElementChild;
 }
 
+// Function to add the GPA column header
 async function tryAddGPAColumn() {
-  // Locate the parent element of column headers
   const headers = document.querySelector('[role="columnheader"]').parentElement;
 
   if (!headers) {
@@ -28,36 +33,60 @@ async function tryAddGPAColumn() {
     return;
   }
 
-  // Check if the last child is already the GPA column
   const children = headers.children;
   const lastChild = children[children.length - 1];
   if (lastChild && lastChild.textContent.trim() === 'GPA') {
-    console.log("GPA column already exists.");
     return;
   }
+
+  // Get and append the GPA header
   const thElement = await getNewElement(<GPAHeader />);
   if (thElement) {
     headers.appendChild(thElement);
     console.log("GPA column added");
   } else {
-    console.error("Failed to render GPA column.");
+    console.error("Failed to add GPA column");
   }
 }
 
+// Function to get all course rows
 function getAllCourseRows() {
   const tbody = document.querySelector('tbody');
-  const trs = tbody.querySelectorAll('tr');
-  return trs;
+  return tbody ? tbody.querySelectorAll('tr') : [];
 }
 
-function addGPAToTable() {
-  tryAddGPAColumn();
+// Function to add GPA to all course rows
+async function addGPAToTable(observer) {
+  if (observer) observer.disconnect();
+
+  await tryAddGPAColumn();
   const courseRows = getAllCourseRows();
+
   if (courseRows.length === 0) return;
 
-  courseRows.forEach(async (tr) => {
-    tr.appendChild(await getNewElement(<GPAContent tr={tr} />));
-  });
+  console.log("Updating GPA for all courses");
+
+  for (const tr of courseRows) {
+    const lastChild = tr.lastElementChild;
+    if (lastChild && lastChild.classList.contains('gpa-content')) {
+      continue;
+    }
+
+    const gpaContent = await getNewElement(<GPAContent tr={tr} />);
+    gpaContent.classList.add('gpa-content');
+    
+    tr.appendChild(gpaContent);
+  }
+
+  if (observer) observer.observe(document.querySelector('tbody'), { childList: true, subtree: true });
 }
 
+function observeTable(){
+  const table = document.querySelector('tbody');
+  if (table) {
+    const observer = new MutationObserver(() => addGPAToTable(observer));
+    observer.observe(table, { childList: true , subtree: true});
+  }
+}
 addGPAToTable();
+observeTable();
