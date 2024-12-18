@@ -7,15 +7,16 @@
   },
   "content_scripts": [
     {
-      "js": ["assets/content.js"],
+      "js": ["content.js"],
       "matches": [
         "https://querycourse.ntust.edu.tw/querycourse/*"
-      ]
+      ],
+      "run_at": "document_end"
     }
   ],
   "web_accessible_resources": [
     {
-      "resources": ["assets/*"],
+      "resources": ["*"],
       "matches": ["<all_urls>"]
     }
   ]

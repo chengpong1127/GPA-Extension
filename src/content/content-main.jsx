@@ -1,28 +1,5 @@
 import { createRoot } from 'react-dom/client';
-import GPAHeader from "../components/GPAHeader";
 import GPAContent from "../components/GPAContent";
-
-// Utility function to create and render the React node
-async function getNewElement(reactNode) {
-  const newElement = document.createElement('div');
-  const root = createRoot(newElement);
-  root.render(reactNode);
-
-  // Wait until the element is rendered
-  await new Promise(resolve => {
-    const observer = new MutationObserver(() => {
-      const element = newElement.firstElementChild;
-      if (element) {
-        observer.disconnect();
-        resolve();
-      }
-    });
-
-    observer.observe(newElement, { childList: true, subtree: true });
-  });
-
-  return newElement.firstElementChild;
-}
 
 // Function to add the GPA column header
 async function tryAddGPAColumn() {
@@ -39,14 +16,12 @@ async function tryAddGPAColumn() {
     return;
   }
 
-  // Get and append the GPA header
-  const thElement = await getNewElement(<GPAHeader />);
-  if (thElement) {
-    headers.appendChild(thElement);
-    console.log("GPA column added");
-  } else {
-    console.error("Failed to add GPA column");
-  }
+  const clonedHead = lastChild.cloneNode(true);
+  clonedHead.textContent = 'GPA';
+  clonedHead.style.width = '3%';
+  clonedHead.setAttribute('aria-label', 'GPA: Not sorted.');
+
+  headers.appendChild(clonedHead);
 }
 
 // Function to get all course rows
@@ -67,17 +42,18 @@ async function addGPAToTable(observer) {
   console.log("Updating GPA for all courses");
 
   for (const tr of courseRows) {
-    const lastChild = tr.lastElementChild;
-    if (lastChild && lastChild.classList.contains('gpa-content')) {
-      continue;
-    }
+    const gpaElements = tr.querySelectorAll('.gpa-content');
+    gpaElements.forEach(element => element.remove());
 
-    const gpaContent = await getNewElement(<GPAContent tr={tr} />);
-    gpaContent.classList.add('gpa-content');
+    const newElement = document.createElement('td');
+    createRoot(newElement).render(<GPAContent tr={tr} />);
+    newElement.classList.add('gpa-content');
     
-    tr.appendChild(gpaContent);
+    tr.appendChild(newElement);
   }
 
+  // Use setTimeout with 0 delay to wait for the next event loop
+  await new Promise(resolve => setTimeout(resolve, 0));
   if (observer) observer.observe(document.querySelector('tbody'), { childList: true, subtree: true });
 }
 

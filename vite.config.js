@@ -12,7 +12,7 @@ export default defineConfig({
         "content-main": 'src/content/content-main.jsx', // For the main content script
       },
       output: {
-        entryFileNames: 'assets/[name].js', // Output file format
+        entryFileNames: '[name].js', // Output file format
       },
     },
     outDir: 'dist', // Output directory
