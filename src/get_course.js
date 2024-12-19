@@ -2,16 +2,18 @@ import fetch_course from "./fetch_course";
 
 const courseData = {};
 
-window.addEventListener("beforeunload", () => {
-  localStorage.setItem("courseData", JSON.stringify(courseData));
-});
-
-window.addEventListener("DOMContentLoaded", () => {
+function load() {
   const savedData = localStorage.getItem("courseData");
   if (savedData) {
     Object.assign(courseData, JSON.parse(savedData));
   }
-});
+}
+function save() {
+  localStorage.setItem("courseData", JSON.stringify(courseData));
+}
+
+load();
+window.addEventListener("beforeunload", save);
 
 export function get_course_from_storage(courseName, lecturer) {
   return courseData[courseName + lecturer] || null;
