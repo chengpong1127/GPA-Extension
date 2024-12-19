@@ -67,7 +67,7 @@ function GPADisplay({courseName, lecturer}){
 }
 
 function NA() {
-  return <div style={{ textAlign: 'center' }}>N/A</div>;
+  return <div style={{ textAlign: 'center', opacity: 0.7 }}>N/A</div>;
 }
 
 function GPAValue({ gpa }) {
