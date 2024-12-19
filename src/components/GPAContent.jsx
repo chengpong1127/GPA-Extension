@@ -12,7 +12,7 @@ export default function GPAContent({ tr }) {
       return { courseName, lecturer };
     }
 
-    
+
     const { courseName, lecturer } = getCourseData(tr);
     setCourseName(courseName);
     setLecturer(lecturer);
@@ -29,8 +29,11 @@ export default function GPAContent({ tr }) {
     };
   }, []);
 
-  
-  return <GPADisplay courseName={courseName} lecturer={lecturer}/>;
+  if (courseName === '' && lecturer === ''){
+    return <></>
+  }else{
+    return <GPADisplay courseName={courseName} lecturer={lecturer}/>
+  }
 }
 
 
