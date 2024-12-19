@@ -62,30 +62,69 @@ function GPADisplay({courseName, lecturer}){
   }else if (courseData === null){
     return <FetchButton onClick={clickHandler}/>
   }else{
-    return <NoData/>
+    return <NA/>
   }
 }
 
-
-function NoData() {
-  return (
-    <td>N/A</td>
-  );
+function NA() {
+  return <div style={{ textAlign: 'center' }}>N/A</div>;
 }
 
 function GPAValue({ gpa }) {
+  const color_map = {
+    3.7: '#10B981', // green
+    2.7: '#F97316', // orange
+    1.7: '#EF4444', // red
+    0.0: '#A855F7', // purple
+  };
+
+  const sorted_keys = Object.keys(color_map)
+    .map(key => parseFloat(key))
+    .sort((a, b) => b - a);
+
+  const color = sorted_keys.find(key => gpa >= key)
+    ? color_map[sorted_keys.find(key => gpa >= key)]
+    : '#A855F7';
+
   return (
-    <td>{gpa.toFixed(2)}</td>
+    <div style={{ fontWeight: 'bold', color: color, textAlign: 'center' }}>
+      {gpa.toFixed(2)}
+    </div>
   );
 }
 
-function FetchButton({onClick}) {
+function FetchButton({ onClick }) {
   return (
     <button 
-      className="w-6 h-6 m-1 hover:bg-gray-400 hover:scale-110 transition-transform duration-200"
-      onClick={onClick}>
-      <SearchIcon/>
+      onClick={onClick}
+      style={{
+        backgroundColor: 'transparent',
+        border: 'none',
+        cursor: 'pointer',
+        transition: 'background-color 0.2s',
+        borderRadius: '25%',
+        margin: 'auto',
+        width: '36px',
+        height: '36px',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}
+      onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#DDD'}
+      onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
+      onMouseDown={(e) => e.currentTarget.style.backgroundColor = '#AAA'}
+      onMouseUp={(e) => e.currentTarget.style.backgroundColor = '#DDD'}
+    >
+      <SearchIcon />
     </button>
+  );
+}
+
+function LoadingAnimation() {
+  return (
+    <div style={{ textAlign: 'center' }}>
+      <div className="lds-ring"><div></div><div></div><div></div><div></div></div>
+    </div>
   );
 }
 

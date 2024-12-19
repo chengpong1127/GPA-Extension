@@ -20,7 +20,7 @@ export function get_course_from_storage(courseName, lecturer) {
 }
 
 export async function get_course_from_fetch(courseName, lecturer) {
-  const token = "lAWH8LnG20ukZDoh54265ZXyiaqhvTp5";
+  const token = "LPdcrfvNc9zjfQH50CQl6QvyBtZ04rWz";
   const data = await fetch_course(token, courseName, lecturer);
   courseData[courseName + lecturer] = data || {};
   return courseData[courseName + lecturer];

@@ -1,5 +1,6 @@
 import { createRoot } from 'react-dom/client';
 import GPAContent from "../components/GPAContent";
+import "../index.css";
 
 // Function to add the GPA column header
 async function tryAddGPAColumn() {

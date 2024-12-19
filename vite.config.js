@@ -12,10 +12,10 @@ export default defineConfig({
         "content-main": 'src/content/content-main.jsx', // For the main content script
       },
       output: {
-        entryFileNames: '[name].js', // Output file format
+        entryFileNames: '[name].js',
+        assetFileNames: '[name].[ext]', // Ensure CSS files are named correctly
       },
     },
-    outDir: 'dist', // Output directory
     emptyOutDir: true, // Clean up output directory on each build
     target: 'esnext', // Ensure compatibility with modern browsers
     assetsInlineLimit: 0, // Prevent assets from being inlined

@@ -11,7 +11,8 @@
       "matches": [
         "https://querycourse.ntust.edu.tw/querycourse/*"
       ],
-      "run_at": "document_end"
+      "run_at": "document_end",
+      "css": ["index.css"]
     }
   ],
   "web_accessible_resources": [
