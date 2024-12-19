@@ -1,29 +1,79 @@
-
+import { get_course_from_fetch, get_course_from_storage} from "../get_course";
+import { useEffect, useState } from "react";
 
 export default function GPAContent({ tr }) {
-  // Check if there are enough columns and handle accordingly
-  if (tr.children.length === 1) {
-    return <></>
-  }
-  const { courseName, lecturer } = getCourseData(tr);
-  
-  function clickHandler() {
-    console.log(`Fetching data of ${courseName} by ${lecturer}`);
-  }
+  const [courseName, setCourseName] = useState('');
+  const [lecturer, setLecturer] = useState('');
+  useEffect(() => {
+    function getCourseData(tr) {
+      const tds = tr.querySelectorAll('td');
+      const courseName = tds[2]?.textContent || '';
+      const lecturer = tds[6]?.textContent || '';
+      return { courseName, lecturer };
+    }
 
+    
+    const { courseName, lecturer } = getCourseData(tr);
+    setCourseName(courseName);
+    setLecturer(lecturer);
 
-  return <td>
-    <FetchButton onClick={clickHandler}/>
-  </td>
+    const observer = new MutationObserver(() => {
+      
+      const { courseName, lecturer } = getCourseData(tr);
+      setCourseName(courseName);
+      setLecturer(lecturer);
+    });
+    observer.observe(tr, { childList: true, subtree: true });
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
   
+  return <GPADisplay courseName={courseName} lecturer={lecturer}/>;
 }
 
-// Function to get course data, added types for better clarity
-function getCourseData(tr) {
-  const tds = tr.querySelectorAll('td');
-  const courseName = tds[2]?.textContent || ''; // Optional chaining and fallback
-  const lecturer = tds[6]?.textContent || ''; // Optional chaining and fallback
-  return { courseName, lecturer };
+
+
+function GPADisplay({courseName, lecturer}){
+  const [courseData, setCourseData] = useState(null);
+
+  useEffect(() => {
+    const data = get_course_from_storage(courseName, lecturer);
+    setCourseData(data);
+    console.log(`Course data for ${courseName} ${lecturer} is fetched from storage, data:`, data);
+  }, [courseName, lecturer]);
+
+  function clickHandler() {
+    const fetchGPA = async () => {
+      const data = await get_course_from_fetch(courseName, lecturer);
+      setCourseData(data);
+      console.log(`Course data for ${courseName} ${lecturer} is fetched, data:`, data);
+    };
+    fetchGPA();
+  }
+
+
+  if (courseData && Object.keys(courseData).length !== 0){
+    return <GPAValue gpa={parseFloat(courseData.grade.GPA)}/>
+  }else if (courseData === null){
+    return <FetchButton onClick={clickHandler}/>
+  }else{
+    return <NoData/>
+  }
+}
+
+
+function NoData() {
+  return (
+    <td>N/A</td>
+  );
+}
+
+function GPAValue({ gpa }) {
+  return (
+    <td>{gpa.toFixed(2)}</td>
+  );
 }
 
 function FetchButton({onClick}) {

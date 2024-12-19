@@ -2,7 +2,7 @@
 
 const url = 'https://gpa.myntust.com/api/v1/GradeData'
 
-export default async function get_course_data(token, courseName, lecturer) {
+export default async function fetch_course(token, courseName, lecturer) {
     const body = {
         "CourseName": courseName,
         "Lecturer": lecturer
@@ -30,6 +30,4 @@ export default async function get_course_data(token, courseName, lecturer) {
         const data = await result.json()
         return data
     }
-
-    throw new Error('Failed to get data')
 }

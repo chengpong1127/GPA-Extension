@@ -42,8 +42,13 @@ async function addGPAToTable(observer) {
   console.log("Updating GPA for all courses");
 
   for (const tr of courseRows) {
-    const gpaElements = tr.querySelectorAll('.gpa-content');
-    gpaElements.forEach(element => element.remove());
+    const gpaElement = tr.querySelector('.gpa-content');
+    if (gpaElement && gpaElement === tr.lastElementChild) {
+      continue;
+    }
+    if (gpaElement) {
+      gpaElement.remove();
+    }
 
     const newElement = document.createElement('td');
     createRoot(newElement).render(<GPAContent tr={tr} />);
@@ -61,8 +66,8 @@ function observeTable(){
   const table = document.querySelector('tbody');
   if (table) {
     const observer = new MutationObserver(() => addGPAToTable(observer));
-    observer.observe(table, { childList: true , subtree: true});
+    observer.observe(table, { childList: true });
   }
 }
-addGPAToTable();
+await addGPAToTable();
 observeTable();
