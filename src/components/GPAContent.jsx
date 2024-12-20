@@ -48,9 +48,12 @@ function GPADisplay({courseName, lecturer}){
 
   function clickHandler() {
     const fetchGPA = async () => {
-      const data = await get_course_from_fetch(courseName, lecturer);
-      setCourseData(data);
-      console.log(`Course data for ${courseName} ${lecturer} is fetched, data:`, data);
+      try {
+        const data = await get_course_from_fetch(courseName, lecturer);
+        setCourseData(data);
+      } catch {
+        alert("Invalid token. Please set a valid token in the extension.");
+      }
     };
     fetchGPA();
   }
