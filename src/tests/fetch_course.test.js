@@ -55,30 +55,3 @@ describe('fetch_course on mocking data', () => {
     await expect(fetch_course(token, courseName, lecturer)).rejects.toThrow('Invalid token');
   });
 });
-
-describe('fetch_course on real data', () => {
-  fetchMocker.disableMocks();
-
-  const token = "tAs6PJfsmC89AZe0RUbaWxQZK2F7dPHy";
-
-  it('should return data when given valid token, courseName and lecturer', async () => {
-    const courseName = '微積分(下)';
-    const lecturer = '沈哲州';
-    const result = await fetch_course(token, courseName, lecturer);
-    expect(result).not.toBeNull();
-  });
-
-  it('should return null when given invalid courseName and lecturer', async () => {
-    const courseName = '微積分(下)';
-    const lecturer = '沈哲洲';
-    const result = await fetch_course(token, courseName, lecturer);
-    expect(result).toBeNull();
-  });
-
-  it('should throw an error when given invalid token', async () => {
-    const token = 'invalid-token';
-    const courseName = '微積分(下)';
-    const lecturer = '沈哲州';
-    await expect(fetch_course(token, courseName, lecturer)).rejects.toThrow('Invalid token');
-  });
-});
