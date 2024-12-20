@@ -20,8 +20,29 @@ export function get_course_from_storage(courseName, lecturer) {
 }
 
 export async function get_course_from_fetch(courseName, lecturer) {
-  const token = "LPdcrfvNc9zjfQH50CQl6QvyBtZ04rWz";
+  const token = localStorage.getItem("token");
   const data = await fetch_course(token, courseName, lecturer);
   courseData[courseName + lecturer] = data || {};
   return courseData[courseName + lecturer];
+}
+
+
+export function set_token(token) {
+  localStorage.setItem("token", token);
+}
+
+export function get_token() {
+  return localStorage.getItem("token");
+}
+
+export async function check_token_validity() {
+  if (!localStorage.getItem("token")) {
+    return false;
+  }
+  try {
+    await get_course_from_fetch("dummy", "dummy");
+    return true;
+  }catch{
+    return false;
+  }
 }
