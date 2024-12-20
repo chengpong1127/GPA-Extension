@@ -3,8 +3,10 @@ import { set_token, get_token, check_token_validity } from './get_course';
 
 export default function App() {
   const [valid, setValid] = useState(null);
+  const [token, setToken] = useState('');
   useEffect(() => {
     check_token_validity().then(setValid);
+    get_token().then(setToken);
   }, []);
 
   return (
@@ -12,7 +14,7 @@ export default function App() {
       <h1 className="text-4xl font-bold mb-6">GPA Extension</h1>
       <p className="mb-4">Get the token from <a href="https://gpa.myntust.com/APIService" className="text-blue-500 underline">https://gpa.myntust.com/APIService</a></p>
       <TextEditor 
-        initialContent={get_token()} 
+        initialContent={token} 
         onConfirm={(value) => {
           set_token(value);
           check_token_validity().then(setValid);

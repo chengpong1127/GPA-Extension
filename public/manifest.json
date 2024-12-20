@@ -19,5 +19,8 @@
       "resources": ["*"],
       "matches": ["<all_urls>"]
     }
+  ],
+  "permissions": [
+    "storage"
   ]
 }
