@@ -1,4 +1,4 @@
-import { get_course_from_fetch, get_course_from_storage} from "../get_course";
+import { get_course_from_fetch, get_course_from_storage} from "../utils/get_course";
 import { useEffect, useState } from "react";
 import FetchButton from "./FetchButton";
 import PropTypes from 'prop-types';

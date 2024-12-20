@@ -1,6 +1,6 @@
 import createFetchMock from 'vitest-fetch-mock';
 import { vi, describe, it, expect, beforeEach } from 'vitest';
-import fetch_course from '../fetch_course';
+import fetch_course from '../utils/fetch_course';
 
 const fetchMocker = createFetchMock(vi);
 

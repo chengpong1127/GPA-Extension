@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { set_token, get_token, check_token_validity } from './get_course';
+import { set_token, get_token, check_token_validity } from './utils/get_course';
 
 export default function App() {
   const [valid, setValid] = useState(null);

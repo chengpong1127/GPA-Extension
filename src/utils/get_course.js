@@ -15,8 +15,12 @@ function save() {
   chrome.storage.local.set({ courseData: JSON.stringify(courseData) });
 }
 
-load();
-window.addEventListener("beforeunload", save);
+async function init() {
+  await load();
+  window.addEventListener("beforeunload", save);
+}
+
+init();
 
 export function get_course_from_storage(courseName, lecturer) {
   return courseData[courseName + lecturer] || null;
