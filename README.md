@@ -20,8 +20,10 @@ This is a chrome extension that can show GPA information on NTUST course informa
 3. Click `Generate API token` button to get the API token.
 <img src="readme_images/myntust.png" alt="NTUST GPA Chrome Extension" width="400">
 4. Enter the API token to the extension, make sure the extension shows `Token validity: Valid`. The token will be expired in a few hours, you need to generate a new token when it's invalid.
+   
 ### Show GPA information
 1. Open the course information page on NTUST website: [https://querycourse.ntust.edu.tw/querycourse/#/](https://querycourse.ntust.edu.tw/querycourse/#/)
+   
 2. You will see a new column `GPA` on the page, with a column of search buttons.
 3. Click the search button to fetch and show the GPA information of the course. 
 ### GPA Display
