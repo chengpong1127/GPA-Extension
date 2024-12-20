@@ -44,7 +44,6 @@ function GPADisplay({courseName, lecturer}){
   useEffect(() => {
     const data = get_course_from_storage(courseName, lecturer);
     setCourseData(data);
-    console.log(`Course data for ${courseName} ${lecturer} is fetched from storage, data:`, data);
   }, [courseName, lecturer]);
 
   function clickHandler() {
@@ -120,13 +119,6 @@ function FetchButton({ onClick }) {
   );
 }
 
-function LoadingAnimation() {
-  return (
-    <div style={{ textAlign: 'center' }}>
-      <div className="lds-ring"><div></div><div></div><div></div><div></div></div>
-    </div>
-  );
-}
 
 
 function SearchIcon() {
