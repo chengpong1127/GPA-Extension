@@ -1,16 +1,36 @@
 import { get_course_from_fetch, get_course_from_storage} from "../get_course";
 import { useEffect, useState } from "react";
 
+function findCourseNameLecturerIndeces() {
+  const thead = document.querySelector('thead');
+  const headers = thead.querySelectorAll('th');
+  let courseNameIndex = 2;
+  let lecturerIndex = 6;
+  headers.forEach((header, index) => {
+    if (header.textContent === '課程名稱' || header.textContent === 'Course Title') {
+      courseNameIndex = index;
+    } else if (header.textContent === '授課教師' || header.textContent === 'Instructor') {
+      lecturerIndex = index;
+    }
+  });
+  return { courseNameIndex, lecturerIndex };
+}
+
+const { courseNameIndex, lecturerIndex } = findCourseNameLecturerIndeces();
+
+function getCourseData(tr) {
+  const tds = tr.querySelectorAll('td');
+  const courseName = tds[courseNameIndex]?.textContent || '';
+  const lecturer = tds[lecturerIndex]?.textContent || '';
+  return { courseName, lecturer };
+}
+
+
 export default function GPAContent({ tr }) {
   const [courseName, setCourseName] = useState('');
   const [lecturer, setLecturer] = useState('');
   useEffect(() => {
-    function getCourseData(tr) {
-      const tds = tr.querySelectorAll('td');
-      const courseName = tds[2]?.textContent || '';
-      const lecturer = tds[6]?.textContent || '';
-      return { courseName, lecturer };
-    }
+    
 
 
     const { courseName, lecturer } = getCourseData(tr);
