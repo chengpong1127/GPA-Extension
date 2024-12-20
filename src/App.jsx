@@ -18,8 +18,9 @@ export default function App() {
         onConfirm={(value) => {
           set_token(value);
           check_token_validity().then(setValid);
+          setToken(value);
         }}
-        onCancel={() => console.log('Cancelled.')}
+        onCancel={() => check_token_validity().then(setValid)}
       />
       {valid !== null && (
         <div>

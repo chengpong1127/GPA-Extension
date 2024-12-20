@@ -23,7 +23,6 @@ export function get_course_from_storage(courseName, lecturer) {
 
 export async function get_course_from_fetch(courseName, lecturer) {
   const token = await get_token();
-  console.log("fetching course, token:", token);
   const data = await fetch_course(token, courseName, lecturer);
   courseData[courseName + lecturer] = data || {};
   return courseData[courseName + lecturer];
