@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import fetch_course from "./fetch_course";
 
 const courseData = {};

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { set_token, get_token, check_token_validity } from './get_course';
 
 export default function App() {
@@ -83,6 +84,12 @@ function TextEditor({ onConfirm, onCancel, initialContent }) {
   );
 }
 
+TextEditor.propTypes = {
+  onConfirm: PropTypes.func.isRequired,
+  onCancel: PropTypes.func.isRequired,
+  initialContent: PropTypes.string.isRequired,
+};
+
 function Button({ imgSrc, alt, onClick }) {
   return (
     <button 
@@ -93,6 +100,17 @@ function Button({ imgSrc, alt, onClick }) {
   );
 }
 
+Button.propTypes = {
+  imgSrc: PropTypes.string.isRequired,
+  alt: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
+};
+
 function Icon({ imgSrc, alt }) {
   return <img src={imgSrc} alt={alt} />;
 }
+
+Icon.propTypes = {
+  imgSrc: PropTypes.string.isRequired,
+  alt: PropTypes.string.isRequired,
+};
