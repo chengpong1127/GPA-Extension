@@ -9,7 +9,8 @@
     {
       "js": ["content.js"],
       "matches": [
-        "https://querycourse.ntust.edu.tw/querycourse/*"
+        "https://querycourse.ntust.edu.tw/querycourse/*",
+        "https://querycourse.ntust.edu.tw/QueryCourse/*"
       ],
       "run_at": "document_end"
     }
