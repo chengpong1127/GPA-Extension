@@ -56,7 +56,7 @@ function TextEditor({ onConfirm, onCancel, initialContent }) {
     return (
       <div className="flex flex-row bg-gray-100">
         <input
-          className="w-[200px] h-[30px] pl-[10px] rounded-lg m-3"
+          className="w-[250px] h-[30px] pl-[10px] rounded-lg m-3"
           type="text"
           value={content}
           readOnly
@@ -72,7 +72,7 @@ function TextEditor({ onConfirm, onCancel, initialContent }) {
   return (
     <div className="flex flex-row bg-gray-100">
       <input
-        className="w-[200px] h-[30px] pl-[10px] rounded-lg m-3"
+        className="w-[250px] h-[30px] pl-[10px] rounded-lg m-3"
         type="text"
         value={content}
         onChange={(e) => { setContent(e.target.value); console.log(e.target.value); }}
