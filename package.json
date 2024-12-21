@@ -11,6 +11,11 @@
     "test": "vitest --config vitest.config.js"
   },
   "dependencies": {
+    "@nextui-org/input": "^2.4.6",
+    "@nextui-org/react": "^2.6.8",
+    "@nextui-org/system": "^2.4.4",
+    "@nextui-org/theme": "^2.4.3",
+    "framer-motion": "^11.15.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
