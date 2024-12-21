@@ -34,3 +34,6 @@ This is a chrome extension that can show GPA information on NTUST course informa
   - Orange: The GPA is between 2.7 and 3.7.
   - Red: The GPA is between 1.7 and 2.7.
   - Purple: The GPA is lower than 1.7.
+
+### Known Issue
+- Sometimes the GPA column would disappear, reloading the page would solve this problem.
