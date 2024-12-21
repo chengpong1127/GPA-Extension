@@ -1,7 +1,7 @@
 # NTUST GPA Chrome Extension
 This is a chrome extension that can show GPA information on NTUST course information page.
 
-<img src="readme_images/show.png" alt="NTUST GPA Chrome Extension" width="400">
+<img src="readme_images/show.png" alt="NTUST GPA Chrome Extension" width="800">
 
 ## Installation
 1. Download the `dist.zip` from the [release page](https://github.com/chengpong1127/GPA-Extension/releases).
@@ -14,7 +14,7 @@ This is a chrome extension that can show GPA information on NTUST course informa
 ### Set up the extension
 1. Click the extension icon on the top right corner of the browser.
 
-<img src="readme_images/extension.png" alt="NTUST GPA Chrome Extension" width="200">
+<img src="readme_images/extension.png" alt="NTUST GPA Chrome Extension" width="400">
 
 2. Enter [https://gpa.myntust.com/APIService/](https://gpa.myntust.com/APIService/), you may need to login with your NTUST account first.
 3. Click `Generate API token` button to get the API token.
