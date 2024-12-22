@@ -35,7 +35,7 @@ This is a Chrome extension that can show GPA information on the NTUST course inf
 <img src="readme_images/extension.png" alt="NTUST GPA Chrome Extension" width="400">
 
 2. Enter [https://gpa.myntust.com/APIService/](https://gpa.myntust.com/APIService/), you may need to login with your NTUST account first.  
-   輸入 [https://gpa.myntust.com/APIService/](https://gpa.myntust.com/APIService/)，可能需要先登入 NTUST 帳號。
+   進入 [https://gpa.myntust.com/APIService/](https://gpa.myntust.com/APIService/)，可能需要先登入 NTUST 帳號。
 
 3. Click `Generate API token` button to get the API token.  
    點擊 `生成 API token` 按鈕來獲取 API token。
