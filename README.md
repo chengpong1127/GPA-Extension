@@ -79,3 +79,9 @@ This is a Chrome extension that can show GPA information on the NTUST course inf
 ### Known Issue / 已知問題
 - Sometimes the GPA column would disappear, reloading the page would solve this problem.  
   有時候 GPA 欄位會消失，重新加載頁面即可解決此問題。
+
+---
+
+## Acknowledgements / 特別感謝
+Special thanks to [myNTUST](https://gpa.myntust.com/) for providing the API that makes this extension possible.  
+特別感謝 [myNTUST](https://gpa.myntust.com/) 提供 API，讓這個擴充功能得以實現。
