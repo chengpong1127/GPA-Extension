@@ -25,17 +25,17 @@ export default function GradeDisplay({ grade_data }) {
       color: 'black', 
       fontWeight: 'normal',
       border: '1px solid #ddd',
-      boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)' // Added shadow
+      boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
     }}>
       <Histogram data={grade_data.grades} color_map={color_map} />
       <div style={{ display: 'flex', justifyContent: 'space-around', marginTop: '2px'}}>
-        <label>
+        <label style={{ backgroundColor: '#e9e9e9', padding: '3px 8px', borderRadius: '4px' }}>
           GPA: {parseFloat(grade_data.GPA).toFixed(2)}
         </label>
-        <label>
+        <label style={{ backgroundColor: '#e9e9e9', padding: '3px 8px', borderRadius: '4px' }}>
           Total: {grade_data.total}
         </label>
-        <label>
+        <label style={{ backgroundColor: '#e9e9e9', padding: '3px 8px', borderRadius: '4px' }}>
           Semester: {grade_data.semester}
         </label>
       </div>
