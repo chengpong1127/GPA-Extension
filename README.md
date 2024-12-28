@@ -74,6 +74,11 @@ This is a Chrome extension that can show GPA information on the NTUST course inf
   - Red: The GPA is between 1.7 and 2.7. / 紅色：GPA 介於 1.7 至 2.7。
   - Purple: The GPA is lower than 1.7. / 紫色：GPA 小於 1.7。
 
+- Detailed GPA information: hover the mouse on the GPA number to see the histogram of the GPA distribution.
+  GPA 詳細資訊：將滑鼠懸停在 GPA 數字上，即可看到 GPA 分布的直方圖。
+
+<img src="readme_images/histogram.png" alt="NTUST GPA Chrome Extension" width="400">
+
 ---
 
 ### Known Issue / 已知問題
