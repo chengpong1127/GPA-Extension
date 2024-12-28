@@ -20,15 +20,15 @@ export default function GradeDisplay({ grade_data }) {
   return (
     <div style={{ 
       background: '#f5f5f5', 
-      padding: '20px', 
-      borderRadius: '20px', 
+      padding: '7px', 
+      borderRadius: '10px', 
       color: 'black', 
       fontWeight: 'normal',
       border: '1px solid #ddd',
       boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)' // Added shadow
     }}>
       <Histogram data={grade_data.grades} color_map={color_map} />
-      <div style={{ display: 'flex', justifyContent: 'space-around', marginTop: '10px'}}>
+      <div style={{ display: 'flex', justifyContent: 'space-around', marginTop: '2px'}}>
         <label>
           GPA: {parseFloat(grade_data.GPA).toFixed(2)}
         </label>

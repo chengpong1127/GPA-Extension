@@ -75,9 +75,8 @@ function GPAValue({ grade }) {
       {showGrade && (
         <div style={{
           position: 'absolute',
-          bottom: '100%',
-          right: '0',
-          marginBottom: '4px',
+          bottom: '-15px',
+          right: '120%',
           zIndex: 10000000000,
         }}>
           <GradeDisplay grade_data={grade} />

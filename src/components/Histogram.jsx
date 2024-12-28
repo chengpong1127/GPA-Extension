@@ -2,14 +2,14 @@ import PropTypes from 'prop-types';
 
 export default function Histogram({ data, color_map }) {
   const maxCount = Math.max(...Object.values(data));
-  const maxHeight = 100;
+  const maxHeight = 40;
   const scale = maxHeight / maxCount;
 
   return (
     <div style={{ display: 'flex', alignItems: 'flex-end', fontSize: '12px' }}>
       {Object.entries(data).map(([grade, count]) => (
         <div key={grade} style={{ margin: '0 5px', textAlign: 'center' }}>
-          <div style={{ marginBottom: '4px' }}>
+          <div style={{ marginBottom: '2px' }}>
             {count > 0 ? count : ''}
           </div>
           <div
