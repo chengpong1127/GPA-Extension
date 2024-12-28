@@ -1,4 +1,5 @@
 import Histogram from "./Histogram";
+import PropTypes from 'prop-types';
 
 const color_map = {
   'A+': '#10B981',
@@ -41,3 +42,12 @@ export default function GradeDisplay({ grade_data }) {
     </div>
   );
 }
+
+GradeDisplay.propTypes = {
+  grade_data: PropTypes.shape({
+    grades: PropTypes.object.isRequired,
+    GPA: PropTypes.string.isRequired,
+    total: PropTypes.number.isRequired,
+    semester: PropTypes.string.isRequired
+  }).isRequired
+};

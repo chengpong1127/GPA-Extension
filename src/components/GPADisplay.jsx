@@ -89,5 +89,10 @@ function GPAValue({ grade }) {
 }
 
 GPAValue.propTypes = {
-  gpa: PropTypes.number.isRequired
+  grade: PropTypes.shape({
+    GPA: PropTypes.string.isRequired,
+    grades: PropTypes.object.isRequired,
+    total: PropTypes.number.isRequired,
+    semester: PropTypes.string.isRequired
+  }).isRequired
 }

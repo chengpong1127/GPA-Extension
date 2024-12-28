@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
 import { set_token, get_token, check_token_validity } from './utils/get_course';
 import { Button, Input } from "@nextui-org/react";
 

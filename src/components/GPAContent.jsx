@@ -31,9 +31,6 @@ export default function GPAContent({ tr }) {
   const [courseName, setCourseName] = useState('');
   const [lecturer, setLecturer] = useState('');
   useEffect(() => {
-    
-
-
     const { courseName, lecturer } = getCourseData(tr);
     setCourseName(courseName);
     setLecturer(lecturer);
@@ -48,7 +45,7 @@ export default function GPAContent({ tr }) {
     return () => {
       observer.disconnect();
     };
-  }, []);
+  }, [tr]);
 
   if (courseName === '' && lecturer === ''){
     return <></>
