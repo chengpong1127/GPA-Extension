@@ -1,6 +1,6 @@
 {
   "name": "NTUST GPA Extension",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "選課時查詢課程GPA的小工具",
   "manifest_version": 3,
   "action": {
