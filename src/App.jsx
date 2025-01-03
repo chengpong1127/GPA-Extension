@@ -12,8 +12,8 @@ export default function App() {
 
   return (
     <main className="flex flex-col items-center bg-stone-50 min-h-72 min-w-[420px]">
-      <h1 className="text-3xl font-bold p-8">GPA Extension</h1>
-      <p className="p-2">Get the token from <a href="https://gpa.myntust.com/APIService" className="text-blue-500 underline">https://gpa.myntust.com/APIService</a></p>
+      <h1 className="text-3xl font-bold p-6">GPA Extension</h1>
+      <p className="p-4">Get the token from <a href="https://gpa.myntust.com/APIService" target="_blank" className="text-blue-500 underline">https://gpa.myntust.com/APIService</a></p>
       <div className='flex flex-row items-center space-x-4'>
         <Input 
           className='w-80 text-xs'
@@ -41,6 +41,8 @@ export default function App() {
         Token validity: {valid ? 'Valid' : 'Invalid'}
         </p>
       )}
+
+      <p><a href="https://querycourse.ntust.edu.tw/querycourse" target="_blank" className="text-blue-500 underline">NTUST Course Catalog System</a></p>
     </main>
   );
 }
