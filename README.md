@@ -2,6 +2,8 @@
 This is a Chrome extension that can show GPA information on the NTUST course information page.  
 這是一個 Chrome 擴充功能，可以在 NTUST 課程資訊頁面上顯示 GPA 資訊。
 
+Chrome Web Store: [NTUST GPA Extension](https://chromewebstore.google.com/detail/ntust-gpa-extension/ialdkcoanfalhomflaokihkeahcnppde)
+
 ---
 
 <img src="readme_images/show.png" alt="NTUST GPA Chrome Extension" width="800">
